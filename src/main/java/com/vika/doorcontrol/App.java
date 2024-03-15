@@ -24,7 +24,7 @@ public class App extends Application {
             System.out.println("NET_DVR_Init Error!");
             // Handle initialization failure if needed
             return;
-        }else{System.out.println("NET_DVR_Init Succes!");}
+        }else{System.out.println("NET_DVR_Init Success!");}
         
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);

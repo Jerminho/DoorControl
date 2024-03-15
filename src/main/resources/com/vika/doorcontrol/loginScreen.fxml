@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.vika.doorcontrol.LoginDeviceViewController" 
+          alignment="CENTER"
+          hgap="10"
+          vgap="10">
+
+    <!-- Login Form -->
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+
+    <!-- Device Address -->
+    <Label text="Device Address:" GridPane.rowIndex="0" GridPane.columnIndex="0"  alignment="CENTER"/>
+    <TextField fx:id="deviceAddress" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+    <!-- User Name -->
+    <Label text="User Name:" GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="CENTER"/>
+    <TextField fx:id="userName" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+    <!-- Password -->
+    <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"  alignment="CENTER"/>
+    <PasswordField fx:id="password" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+    <!-- Port -->
+    <Label text="Port:" GridPane.rowIndex="3" GridPane.columnIndex="0"  alignment="CENTER"/>
+    <TextField fx:id="port" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+    <!-- Login Button -->
+    <Button text="Login" onAction="#handleLogin" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"  alignment="CENTER"/>
+
+    <!-- Door Control Buttons -->
+    <HBox GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2" spacing="5" alignment="CENTER" >
+        <Button text="Open Door" onAction="#OpenDoor" />
+        <Button text="Close Door" onAction="#CloseDoor" />
+        <Button text="Stay Open" onAction="#StayOpen"/>
+        <Button text="Stay Close" onAction="#StayClosed"/>
+    </HBox>
+</GridPane>

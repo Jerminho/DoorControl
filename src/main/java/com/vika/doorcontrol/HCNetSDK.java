@@ -8,6 +8,8 @@ import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.PointerByReference;
+import java.util.Arrays;
+import java.util.List;
 /**
  *
  * @author pierr
@@ -77,6 +79,43 @@ public interface HCNetSDK extends Library{
         super(p);
         read();
     }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return Arrays.asList(
+            "sSerialNumber", 
+            "byAlarmInPortNum", 
+            "byAlarmOutPortNum", 
+            "byDiskNum", 
+            "byDVRType", 
+            "byChanNum", 
+            "byStartChan", 
+            "byAudioChanNum", 
+            "byIPChanNum", 
+            "byZeroChanNum", 
+            "byMainProto", 
+            "bySubProto", 
+            "bySupport", 
+            "bySupport1", 
+            "bySupport2", 
+            "wDevType", 
+            "bySupport3", 
+            "byMultiStreamProto", 
+            "byStartDChan", 
+            "byStartDTalkChan", 
+            "byHighDChanNum", 
+            "bySupport4", 
+            "byLanguageType", 
+            "byVoiceInChanNum", 
+            "byStartVoiceInChanNo", 
+            "bySupport5", 
+            "bySupport6", 
+            "byMirrorChanNum", 
+            "wStartMirrorChanNo", 
+            "bySupport7", 
+            "byRes2"
+        );
+    }
 
     public static class ByReference extends NET_DVR_DEVICEINFO_V30 implements Structure.ByReference {
     }
@@ -100,6 +139,26 @@ public interface HCNetSDK extends Library{
     public byte bySupportDev5;
     public byte byLoginMode;
     public byte[] byRes2 = new byte[246]; // Size 246, you might need to adjust the size based on the actual struct
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return Arrays.asList(
+            "struDeviceV30",
+            "bySupportLock",
+            "byRetryLoginTime",
+            "byPasswordLevel",
+            "byProxyType",
+            "dwSurplusLockTime",
+            "byCharEncodeType",
+            "byRes1",
+            "bySupport",
+            "byRes",
+            "dwOEMCode",
+            "bySupportDev5",
+            "byLoginMode",
+            "byRes2"
+        );
+    }
 }
     
 public class NET_DVR_USER_LOGIN_INFO extends Structure {
@@ -117,8 +176,32 @@ public class NET_DVR_USER_LOGIN_INFO extends Structure {
     public byte byHttps;
     public int iProxyID;
     public byte[] byRes3 = new byte[120]; // Size 120, you might need to adjust the size based on the actual struct
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return Arrays.asList(
+            "sDeviceAddress",
+            "byUseTransport",
+            "wPort",
+            "sUserName",
+            "sPassword",
+            "cbLoginResult",
+            "pUser",
+            "bUseAsynLogin",
+            "byProxyType",
+            "byUseUTCTime",
+            "byLoginMode",
+            "byHttps",
+            "iProxyID",
+            "byRes3"
+        );
+    }
 }    
     
-    int NET_DVR_Login_V40(NET_DVR_USER_LOGIN_INFO.ByReference pLoginInfo, NET_DVR_DEVICEINFO_V40.ByReference lpDeviceInfo);
+    int NET_DVR_Login_V40(NET_DVR_USER_LOGIN_INFO pLoginInfo, NET_DVR_DEVICEINFO_V40 lpDeviceInfo);
     
+    int NET_DVR_GetLastError();
+    int SERIALNO_LEN = 48;
+    int NET_DVR_PASSWORD_ERROR = 1; // Username or Password error
+    int NET_DVR_USER_LOCKED = 153; // User is locked
 }

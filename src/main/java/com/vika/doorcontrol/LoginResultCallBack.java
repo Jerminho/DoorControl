@@ -4,6 +4,7 @@
  */
 package com.vika.doorcontrol;
 
+import com.sun.jna.Callback;
 import com.sun.jna.Pointer;
 import com.vika.doorcontrol.HCNetSDK.NET_DVR_DEVICEINFO_V30;
 
@@ -11,7 +12,7 @@ import com.vika.doorcontrol.HCNetSDK.NET_DVR_DEVICEINFO_V30;
  *
  * @author pierr
  */
-public interface LoginResultCallBack {
+public interface LoginResultCallBack extends Callback {
         void invoke(int lUserID, int dwResult, NET_DVR_DEVICEINFO_V30 lpDeviceInfo, Pointer pUser);
 
 }
